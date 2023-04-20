@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     public Vector3 cameraOffset;
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
