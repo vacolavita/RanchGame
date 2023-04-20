@@ -15,7 +15,7 @@ public class UIButtons : MonoBehaviour
         Screen.orientation = ScreenOrientation.Portrait;
         camera1.SetActive(false);
         camera2.SetActive(true);
-        Debug.Log("this is working");
+        Debug.Log("Portrait mode.");
     }
 
     public void OnMenuButtonClick()
@@ -23,6 +23,6 @@ public class UIButtons : MonoBehaviour
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         camera1.SetActive(true);
         camera2.SetActive(false);
-        Debug.Log("this is working");
+        Debug.Log("Landscape mode.");
     } 
 }
