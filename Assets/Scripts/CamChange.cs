@@ -12,6 +12,7 @@ public class CamChange : MonoBehaviour
     public int CamMode;
     
     bool oneTime = false;
+    bool oneTimeAgain = false;
 
     void Start()
     {
@@ -84,10 +85,9 @@ public class CamChange : MonoBehaviour
         if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown){
             ThirdCam.SetActive (false);
             FirstCam.SetActive (true);
-            oneTime = false;
-            if(!oneTime){
+            if(!oneTimeAgain){
                 Debug.Log("The game is currently in portrait mode.");
-                oneTime = true;
+                oneTimeAgain = true;
             }
             
         }
