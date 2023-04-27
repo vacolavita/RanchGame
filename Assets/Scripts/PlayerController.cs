@@ -18,10 +18,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _gravityValue = -9.81f;
 
+    Animator animator;
+    int isWalkingHash;
+
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
- 
+        animator = GetComponent<Animator>();
+        isWalkingHash = Animator.StringToHash("isWalking");
     }
 
     private void Update()
@@ -31,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
+        bool isWalking = animator.GetBool("isWalking");
+
         _groundedPlayer = _controller.isGrounded;
         if (_groundedPlayer && _playerVelocity.y < 0)
         {
@@ -44,6 +50,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             movementInput = new Vector3(Input.mousePosition.x - Screen.width/2, 0, Input.mousePosition.y - Screen.height/2);
+            animator.SetBool("isWalking", true);
+        }
+        else{
+            animator.SetBool("isWalking", false);
         }
         Vector3 movementDirection = movementInput;
         if (Mathf.Sqrt(Mathf.Pow(movementInput.x, 2) + Mathf.Pow(movementInput.z, 2)) > 1)
