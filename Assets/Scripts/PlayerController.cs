@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-
-        Vector3 movementInput = new Vector3(horizontalInput, 0, verticalInput);
+        Vector3 movementInput = new Vector3(0, 0, 0);
+        movementInput = new Vector3(horizontalInput, 0, verticalInput);
         if (Input.GetMouseButton(0))
         {
             movementInput = new Vector3(Input.mousePosition.x - Screen.width/2, 0, Input.mousePosition.y - Screen.height/2);
@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Sqrt(Mathf.Pow(movementInput.x, 2) + Mathf.Pow(movementInput.z, 2)) > 1)
         movementDirection = movementInput.normalized;
         
+        if(Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
         _controller.Move(movementDirection * _playerSpeed * Time.deltaTime);
 
         if (movementDirection != Vector3.zero)
