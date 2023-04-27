@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Snap : MonoBehaviour
 {
+    private Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = GameObject.GetComponent<FirstCam>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

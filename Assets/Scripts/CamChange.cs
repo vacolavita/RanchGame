@@ -9,7 +9,6 @@ public class CamChange : MonoBehaviour
     
     public GameObject ThirdCam;
     public GameObject FirstCam;
-    public GameObject JoyStick;
     public int CamMode;
     
     bool oneTime = false;
@@ -86,7 +85,6 @@ public class CamChange : MonoBehaviour
         if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown){
             ThirdCam.SetActive (false);
             FirstCam.SetActive (true);
-            JoyStick.SetActive(false);
             if(!oneTimeAgain){
                 Debug.Log("The game is currently in portrait mode.");
                 oneTimeAgain = true;
@@ -96,7 +94,6 @@ public class CamChange : MonoBehaviour
         else{
             ThirdCam.SetActive (true);
             FirstCam.SetActive (false);
-            JoyStick.SetActive(true);
             if (!oneTime){
                 Debug.Log("The game is currently in landscape mode.");
                 oneTime = true;
