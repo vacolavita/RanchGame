@@ -18,6 +18,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _gravityValue = -9.81f;
 
+    [SerializeField]
+    private FixedJoystick _joystick;
+
+    [SerializeField]
+    private Rigidbody _rigidbody;
+
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -58,5 +64,13 @@ public class PlayerController : MonoBehaviour
         _playerVelocity.y = Mathf.Max(_playerVelocity.y, -20);
 
         _controller.Move(_playerVelocity * Time.deltaTime);
+
+
+        _rigidbody.velocity = new Vector3(_joystick.Horizontal * _playerSpeed, _rigidbody.velocity.y, _joystick.Vertical * _playerSpeed);
+
+        if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
+        {
+            transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+        }
     }
 }
