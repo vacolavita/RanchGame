@@ -9,7 +9,7 @@ public class Snap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = GameObject.GetComponent<FirstCam>();
+        //cam = GameObject.GetComponent<FirstCam>();
     }
 
 }
