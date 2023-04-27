@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movementInput = new Vector3(horizontalInput, 0, verticalInput);
+        if (Input.GetMouseButton(0))
+        {
+            movementInput = new Vector3(Input.mousePosition.x - Screen.width/2, 0, Input.mousePosition.y - Screen.height/2);
+        }
         Vector3 movementDirection = movementInput;
         if (Mathf.Sqrt(Mathf.Pow(movementInput.x, 2) + Mathf.Pow(movementInput.z, 2)) > 1)
         movementDirection = movementInput.normalized;
