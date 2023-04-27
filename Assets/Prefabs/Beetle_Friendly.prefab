@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2116589883013815403}
   - component: {fileID: 3890973220283562087}
+  - component: {fileID: -5396632321991148551}
   m_Layer: 3
   m_Name: Beetle_Friendly
   m_TagString: Untagged
@@ -125,7 +126,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591023992708859601}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -140,6 +141,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-5396632321991148551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591023992708859601}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00bd79c19868c904eba26059da964a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 3
 --- !u!1 &6969788717071643460
 GameObject:
   m_ObjectHideFlags: 0
