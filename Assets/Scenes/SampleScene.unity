@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bd79c19868c904eba26059da964a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 3
+  waitTime: 7
 --- !u!136 &172922592
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bd79c19868c904eba26059da964a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 3
+  waitTime: 7
 --- !u!136 &1098920813
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1610,7 +1610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bd79c19868c904eba26059da964a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 3
+  waitTime: 7
 --- !u!136 &1536848797
 CapsuleCollider:
   m_ObjectHideFlags: 0
