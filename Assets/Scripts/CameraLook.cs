@@ -6,17 +6,14 @@ public class CameraLook : MonoBehaviour
 {
     public GameObject[] animalList;
     public GameObject cameraContainer;
+    public GameObject player;
     public Camera cam;
     private int[] scores; 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        inCamera(animalList[0]);
         Debug.Log(getDistance(animalList[0]) +
             ", " +
             getCentered(animalList[0]) +
@@ -53,5 +50,23 @@ public class CameraLook : MonoBehaviour
         scor *= 1.02f;
         scor = Mathf.Clamp(scor, 0, 100);
         return (int)scor;
+    }
+
+    bool inCamera(GameObject obj) {
+        Plane[] cameraFrustum = GeometryUtility.CalculateFrustumPlanes(cam);
+        Bounds bounds = obj.GetComponent<Collider>().bounds;
+        if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds)) {
+            Vector3 direction = cameraContainer.transform.position - obj.transform.position;
+            float angle = Vector3.Angle(direction, transform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(obj.transform.position, direction.normalized, out hit, 100))
+            {
+                if (hit.collider == player.GetComponent<Collider>())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

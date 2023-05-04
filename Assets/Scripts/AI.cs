@@ -7,7 +7,7 @@ public class AI : MonoBehaviour
 {
 
     private NavMeshAgent agent;
-    public float waitTime = 6;
+    public float waitTime = 10;
     private float timer = 0;
     private float timer2 = 0;
 
