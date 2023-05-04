@@ -29,8 +29,8 @@ public class CameraLook : MonoBehaviour
 
     int getCentered(GameObject obj) {
         float scor = 0;
-        Vector3 rot = cameraContainer.transform.TransformDirection(Vector3.forward);
-        Vector3 toOther = obj.transform.position - cameraContainer.transform.position;
+        Vector3 rot = cam.transform.TransformDirection(Vector3.forward);
+        Vector3 toOther = obj.transform.position - cam.transform.position;
         toOther.Normalize();
         scor = Vector3.Dot(rot, toOther) * 100;
         scor -= 90;
