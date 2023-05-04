@@ -8,19 +8,17 @@ public class CameraLook : MonoBehaviour
     public GameObject cameraContainer;
     public GameObject player;
     public Camera cam;
-    private int[] scores; 
+    public int[] scores;
+
+    private void Start()
+    {
+        scores = new int[animalList.Length];
+    }
 
     // Update is called once per frame
     void Update()
     {
-        inCamera(animalList[0]);
-        Debug.Log(getDistance(animalList[0]) +
-            ", " +
-            getCentered(animalList[0]) +
-            ", " +
-            getDirection(animalList[0])
-            );
-        
+        Debug.Log(scores[0] + ", " + scores[1] + ", " + scores[2]);
     }
 
     int getDistance(GameObject obj) {
@@ -46,8 +44,8 @@ public class CameraLook : MonoBehaviour
         Vector3 rot = obj.transform.TransformDirection(Vector3.forward);
         Vector3 toOther = new Vector3(cameraContainer.transform.position.x, obj.transform.position.y, cameraContainer.transform.position.z) - obj.transform.position;
         toOther.Normalize();
-        scor = Vector3.Dot(rot, toOther) * 100;
-        scor *= 1.02f;
+        scor = (Vector3.Dot(rot, toOther) + 1) * 50;
+        scor *= 1.01f;
         scor = Mathf.Clamp(scor, 0, 100);
         return (int)scor;
     }
@@ -68,5 +66,25 @@ public class CameraLook : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void takePicture() {
+        int scor = 0;
+        int scortemp = 0;
+        int index = -1;
+        for (int i = 0; i <= animalList.Length-1; i++)
+        {
+            if (inCamera(animalList[i])) {
+                scortemp = getDistance(animalList[i]) + getCentered(animalList[i]) + getDirection(animalList[i]);
+                if (scortemp > scor) {
+                    scor = scortemp;
+                    index = i;
+                }
+            }
+            scortemp = 0;
+        }
+        if (index != -1 && scor > scores[index]) {
+            scores[index] = scor;
+        }
     }
 }
