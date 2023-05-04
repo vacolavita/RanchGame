@@ -19,25 +19,12 @@ public class CameraController : MonoBehaviour
     {
         Vector3 dir = (cameraOffset).normalized;
         float dist = Mathf.Sqrt(Mathf.Pow(cameraOffset.x, 2) + Mathf.Pow(cameraOffset.z, 2));
-        RaycastHit hit;
 
-
-
-        if (Physics.Raycast(cameraFollow.position, dir.normalized, out hit, dist))
-        {
-            transform.SetPositionAndRotation(new Vector3(
-Mathf.Lerp(transform.position.x, cameraFollow.position.x + cameraOffset.x / 2, followTightness.x * 3 * Time.deltaTime),
-Mathf.Lerp(transform.position.y, cameraFollow.position.y + cameraOffset.y * 1.1f, followTightness.y * Time.deltaTime),
-Mathf.Lerp(transform.position.z, cameraFollow.position.z - 2, followTightness.z * Time.deltaTime)
-), transform.rotation);
-        }
-        else {
             transform.SetPositionAndRotation(new Vector3(
     Mathf.Lerp(transform.position.x, cameraFollow.position.x + cameraOffset.x, followTightness.x * Time.deltaTime),
     Mathf.Lerp(transform.position.y, cameraFollow.position.y + cameraOffset.y, followTightness.y * Time.deltaTime),
     Mathf.Lerp(transform.position.z, cameraFollow.position.z + cameraOffset.z, followTightness.z * Time.deltaTime)
     ), transform.rotation);
-        }
         if (transform.position.z > cameraFollow.position.z - 1)
         {
             transform.SetPositionAndRotation(new Vector3(transform.position.x, transform.position.y, cameraFollow.position.z - 1), transform.rotation);

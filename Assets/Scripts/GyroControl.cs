@@ -8,17 +8,11 @@ public class GyroControl : MonoBehaviour
     private Gyroscope gyro;
 
     public GameObject capsule;
-    private GameObject cameraContainer;
+    public GameObject cameraContainer;
     private Quaternion rot;
 
     private void Start()
     {
-        cameraContainer = new GameObject("Camera Container");
-        cameraContainer.transform.position = transform.position;
-        transform.SetParent(cameraContainer.transform);
-
-        capsule.transform.position = transform.position;
-        cameraContainer.transform.parent = capsule.transform;
 
         gyroEnabled = EnableGyro();
     }

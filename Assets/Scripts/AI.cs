@@ -7,7 +7,7 @@ public class AI : MonoBehaviour
 {
 
     private NavMeshAgent agent;
-    public float waitTime = 3;
+    public float waitTime = 6;
     private float timer = 0;
     private float timer2 = 0;
 
@@ -29,7 +29,6 @@ public class AI : MonoBehaviour
             {
                 pos = (Random.insideUnitSphere * 10 + transform.position);
                 pos.y = transform.position.y;
-                Debug.Log("Calculating");
             } while (!NavMesh.CalculatePath(transform.position, pos, NavMesh.AllAreas, path));
             timer = waitTime;
             timer2 = 10;

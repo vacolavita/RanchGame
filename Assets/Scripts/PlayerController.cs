@@ -58,9 +58,16 @@ public class PlayerController : MonoBehaviour
         Vector3 movementDirection = movementInput;
         if (Mathf.Sqrt(Mathf.Pow(movementInput.x, 2) + Mathf.Pow(movementInput.z, 2)) > 1)
         movementDirection = movementInput.normalized;
-        
-        if(Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
-        _controller.Move(movementDirection * _playerSpeed * Time.deltaTime);
+
+
+
+
+        if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
+        {
+            _controller.Move(movementDirection * _playerSpeed * Time.deltaTime);
+        }
+        else
+            movementDirection = Vector3.zero;
 
         if (movementDirection != Vector3.zero)
         {
