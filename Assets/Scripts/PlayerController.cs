@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     int isWalkingHash;
 
+    public AudioSource footstepsSound;
+
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -51,9 +53,11 @@ public class PlayerController : MonoBehaviour
         {
             movementInput = new Vector3(Input.mousePosition.x - Screen.width/2, 0, Input.mousePosition.y - Screen.height/2);
             animator.SetBool("isWalking", true);
+            footstepsSound.enabled = true;
         }
         else{
             animator.SetBool("isWalking", false);
+            footstepsSound.enabled = false;
         }
         Vector3 movementDirection = movementInput;
         if (Mathf.Sqrt(Mathf.Pow(movementInput.x, 2) + Mathf.Pow(movementInput.z, 2)) > 1)
@@ -67,8 +71,10 @@ public class PlayerController : MonoBehaviour
             _controller.Move(movementDirection * _playerSpeed * Time.deltaTime);
         }
         else
+        {
             movementDirection = Vector3.zero;
-
+            footstepsSound.enabled = false;
+        }
         if (movementDirection != Vector3.zero)
         {
             Quaternion desiredRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
